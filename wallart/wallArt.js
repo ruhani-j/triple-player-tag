@@ -6,7 +6,7 @@ function setup() {
   // TODO: Draw horizontal and vertical guidelines
   // moved to draw
 } // end setup
-// TODO: Create wall drawing inside draw() function
+  // TODO: Create wall drawing inside draw() function
 
 function draw() {
   // Inside the draw() function:
@@ -23,7 +23,7 @@ function draw() {
   noStroke();
   fill("#ffd700");
   // TODO: Use nested for loops to draw a grid of circles
-  for (let posX = width / 2 + 15; posX < width; posX += 25) {
+  for (let posX = width / 2+15; posX < width; posX += 25) {
     for (let posY = 0; posY < height / 2; posY += 25) {
       // TODO: Offset y positions of every other column by 10 pixels
       if (posX % 50 === 0) {
@@ -36,22 +36,25 @@ function draw() {
   }
   // Draw checkered squares:
   // TODO: Set fill color
-  fill(255, 0, 0);
+  fill(255, 0, 0)
   // TODO: Use nested for loops to draw rows of squares
-  // TODO: Offset y positions of every other column by 25 pixels
-  for (let posX = 0; posX < width / 2; posX += 25) {
-    for (let posY = height / 2 + 10; posY < height; posY += 50) {
-      if (posX % 2 === 0) {
-        square(posX, posY + 25, 25); // Even columns with offset
-      } else {
-        square(posX, posY, 25); // Odd columns
-      }
+  for (let posX = 25; posX < width / 2; posX += 25) {
+    for (let posY = height / 2; posY < height; posY += 50) {
+      square(posX, posY, 25); // Draw squares of size 25px
     }
   }
-  // Draw parallel diagonal lines:
+
+  // TODO: Offset y positions of every other column by 25 pixels
+  for (let posX = 50; posX < width / 2; posX += 50) {
+    for (let posY = height / 2; posY < height; posY += 50) {
+      square(posX, posY + 25, 25); // Offset every other column by 25px for checkered pattern
+    }
+  }
+
+// Draw parallel diagonal lines:
   // TODO: Set stroke color and weight
   stroke(0, 0, 255); // Set stroke color to blue
-  strokeWeight(10); // Set stroke weight to 10 pixels
+  strokeWeight(10);  // Set stroke weight to 10 pixels
 
   // TODO: Use a for loop to draw diagonal lines in the bottom-right quadrant
   for (let i = 0; i < 10; i++) {
