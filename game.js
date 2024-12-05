@@ -17,7 +17,8 @@ let triangleColor;
 let triangleScore = 0;
 
 let mouseScore = 0;
-let lastTouchTime = 0; // Time when Player Circle last touched something
+let lastHeartTouchTime = 0;
+let lastTriangleTouchTime = 0;
 let mouseTouched = false;
 
 let idleTime = 5000; // 5 seconds for Player Circle to get a point
@@ -70,17 +71,17 @@ function draw() {
   
   // check if Player Circle touches heart or triangle
   if (dist(mouseX, mouseY, heartX + 100, heartY + 100) < 20) {
-    if (millis() - lastTouchTime > touchTime) {
+    if (millis() - lastHeartTouchTime > touchTime) {
       heartScore++;
-      lastTouchTime = millis(); 
+      lastHeartTouchTime = millis();
     }
     mouseTouched = true;
   }
-  
+
   if (dist(mouseX, mouseY, triangleX + 100, triangleY + 100) < 20) {
-    if (millis() - lastTouchTime > touchTime) {
+    if (millis() - lastTriangleTouchTime > touchTime) {
       triangleScore++;
-      lastTouchTime = millis();
+      lastTriangleTouchTime = millis();
     }
     mouseTouched = true;
   }
@@ -124,5 +125,5 @@ function drawHeart(x, y, size) {
 function keyPressed() {
   if (key === 'h' || key === 'H') heartColor = color(random(255), random(255), random(255));
   if (key === 't' || key === 'T') triangleColor = color(random(255), random(255), random(255));
-  if (key === 'y' || key === 'Y') triangleAngle += 15; // rotate triangle
+  if (key === 'y' || key === 'Y') triangleAngle += PI / 12; // rotate triangle 15 degrees
 }
